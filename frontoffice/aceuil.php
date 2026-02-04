@@ -1,14 +1,41 @@
 <?php
+require_once 'service_bdd.php';
+connexionbdd();
 
-$dsn = 'mysql:host=localhost;dbname=bts;charset=utf8';
-$user = 'root';
-$password = '';
+if (isset($_POST['nom']) 
+    && isset($_POST['prenom']) 
+    && isset($_POST['classe']) 
+    && isset($_POST['description']) 
+    && isset($_POST['passions']) 
+    && isset($_POST['projet']))
+{
+    $nom= $_POST['nom'];
+    $prenom= $_POST['prenom'];
+    $classe= $_POST['classe'];
+    $description= $_POST['description'];
+    $passions= $_POST['passions'];
+    $projet= $_POST['projet'];
 
-try {
-    $pdo = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Echec de la connexion : ' . $e->getMessage();
-    exit;
+    echo "ton nom de famille est ". $nom ;
+
+    try {
+        $db=connexionbdd();
+        $sql = "INSERT INTO etudiant (nom, prenom, classe, description, passions, projet)
+            VALUES (:nom, :prenom, :classe, :description, :passions, :projet)";
+        $requete = $db->prepare($sql);
+        $requete->execute([
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':classe' => $classe,
+            ':description' => $description,
+            ':passions' => $passions,
+            ':projet' => $projet,
+        ]);
+        echo "<p style='color:green;'>L'etudiant $prenom $nom a été ajouté avec succès !</p>";
+    } catch (PDOException $e){
+        echo "<p style='color:red;'>Erreur SQL : " . $e->getMessage() . "</p>";
+    }
+
 }
 ?>
 
@@ -21,17 +48,25 @@ try {
     <title>aceuil</title>
     <link rel="stylesheet" href="style.css"></head>
 <body>
-    <section>
-        <form action="" method="POST">
-            <label for="nom">Nom</label>
-            <input type="text" name="nom">
-            <label for="prenom">Prenom</label>
-            <input type="text" name="prenom">
-            <label for="classe">classe</label>
-            <input type="text" name="classe">
-            <input type="submit" value="ENVOYER">
-        </form>
-    </section>
+    <div class="grid">
+        <section>
+            <form action="" method="POST">
+                <label for="nom">Nom</label>
+                <input type="text" name="nom">
+                <label for="prenom">Prenom</label>
+                <input type="text" name="prenom">
+                <label for="classe">classe</label>
+                <input type="text" name="classe">
+                <label for="description">description</label>
+                <input type="text" name="description">
+                <label for="passions">passions</label>
+                <input type="text" name="passions">
+                <label for="projet">projet</label>
+                <input type="text" name="projet">
+                <input type="submit" value="ENVOYER">
+            </form>
+        </section>
+    </div>
     
 </body>
 </html>

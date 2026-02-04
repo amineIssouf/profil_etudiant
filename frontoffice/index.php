@@ -1,15 +1,7 @@
 <?php
+require_once 'service_bdd.php';
+connexionbdd();
 
-$dsn = 'mysql:host=localhost;dbname=bts;charset=utf8';
-$user = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Echec de la connexion : ' . $e->getMessage();
-    exit;
-}
 ?>
 
 
@@ -84,7 +76,7 @@ try {
       <!-- 📝 EDITER ICI -->
       <p>Ma passion pour le jeu vidéo est telle qu'elle est devenue une ambition : mon objectif est de créer mon propre jeu. Je souhaite explorer les processus de conception (game design), de programmation, pour transformer une idée en une véritable expérience .</p>
     </section>
-    <form action="aceuil.php"aceuil>
+    <form action="aceuil.php">
       <button>ajouter un etudiant</button>
         
     </form>
