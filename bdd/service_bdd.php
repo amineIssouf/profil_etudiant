@@ -27,3 +27,10 @@ function recuperer_les_etudiant()
 
 }
 
+function recuperer_un_etudiant_par_id($id) {
+    $db = connexionbdd(); // Assurez-vous que cette fonction retourne l'objet PDO
+    $sql = "SELECT * FROM etudiant WHERE id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}

@@ -68,7 +68,7 @@ $les_etudiants=recuperer_les_etudiant();
       <p>Ma passion pour le jeu vidéo est telle qu'elle est devenue une ambition : mon objectif est de créer mon propre jeu. Je souhaite explorer les processus de conception (game design), de programmation, pour transformer une idée en une véritable expérience .</p>
     </section>
     <form action="aceuille.php">
-      <button>page d'aceille</button>
+      <button>page d'Accueil</button>
         
     </form>
     <form action="../backoffice/ajouter_etudiant.php">
