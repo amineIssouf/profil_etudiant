@@ -1,7 +1,7 @@
 <?php
-require_once 'service_bdd.php';
+require_once '../bdd/service_bdd.php';
 connexionbdd();
-
+$les_etudiants=recuperer_les_etudiant();
 ?>
 
 
@@ -30,7 +30,7 @@ connexionbdd();
         <h1>Amine Issouf</h1>
         <p class="subtitle">BTS SIO2 — Lycée Bamana — SLAM </p>
         <div class="tags">
-          <span class="tag">Foot</span>
+          <span class="tag">classe</span>
           <span class="tag">music</span>
           <span class="tag">jeux video</span>
         </div>
@@ -46,6 +46,10 @@ connexionbdd();
     <section id="desc">
       <h2>🙋 Description — Qui suis-je ?</h2>
       <!-- 📝 EDITER ICI -->
+      <?php
+      echo ''. $les_etudiants['description'];
+
+      ?>
       <p>Je m'éclate devant les jeux vidéo et je suis toujours au rendez-vous pour regarder un bon match de foot !</p>
     </section>
     <section id="passions">
@@ -57,26 +61,17 @@ connexionbdd();
         <li>music</li>
       </ul>
     </section>
-    <section id="artistes">
-      <h2>🎵 Top 3 artistes</h2>
-      <!-- 📝 EDITER ICI -->
-      <ol>
-        <li>B2K</li><li>WALTER</li><li>Kaaris</li>
-      </ol>
-    </section>
-    <section id="films">
-      <h2>🎬 Top 3 séries/films</h2>
-      <!-- 📝 EDITER ICI -->
-      <ol>
-        <li>TRRIGER</li><li>Chaos</li><li>ALICE</li>
-      </ol>
-    </section>
+
     <section id="projets">
       <h2>🚀 Projets / ambitions</h2>
       <!-- 📝 EDITER ICI -->
       <p>Ma passion pour le jeu vidéo est telle qu'elle est devenue une ambition : mon objectif est de créer mon propre jeu. Je souhaite explorer les processus de conception (game design), de programmation, pour transformer une idée en une véritable expérience .</p>
     </section>
-    <form action="aceuil.php">
+    <form action="aceuille.php">
+      <button>page d'aceille</button>
+        
+    </form>
+    <form action="../backoffice/ajouter_etudiant.php">
       <button>ajouter un etudiant</button>
         
     </form>

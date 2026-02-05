@@ -15,3 +15,15 @@ function connexionbdd()
     
 }
 
+
+function recuperer_les_etudiant()
+{
+    $pdo= connexionbdd();
+    $sql_rqt= 'SELECT * FROM etudiant';
+    $sql= $pdo->prepare($sql_rqt);
+    $sql->execute();
+    $sql_resultat = $sql->fetchALL();
+    return $sql_resultat;
+
+}
+
